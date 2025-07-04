@@ -29,9 +29,9 @@ load_dotenv()
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -147,4 +147,12 @@ MEDIA_ROOT = BASE_DIR/'static/image/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#HTTPS SETTINGS.
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
 
+#HSTS SETTINGS.
+SECURE_HSTS_SECONDS = 31536000 # 1yrs.
+SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
