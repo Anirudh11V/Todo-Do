@@ -1,0 +1,123 @@
+{% extends 'welpage.html' %}
+{% load static %}
+{% block content %}
+
+    <main><br>
+        
+        <section id="homesect">
+            <div id="out">
+                <figure>
+                    <a href="{% url 'logout' %}" type="submit"><img src="{% static 'image/out.png' %}"></a>
+                    <figcaption>logout</figcaption>
+                </figure>
+                
+            </div>
+            <a href="#creation"><img src="{% static 'image/plus.png' %}"></a>
+            <div id="user">
+                {% if user.is_authenticated %}
+                <p>Welcome, {{user.username}} </p>
+                {% endif %}
+            </div><hr>
+            
+        </section><br>
+
+        <section >
+            <div class="container-fluid">
+                <div>
+                    <table class="table table-light table-striped">
+                        
+                        <thead>
+                            <tr>
+                                <td>user.id</td>
+                                <td>Username</td>
+                                <td>Todo Title</td>
+                                <td>Todo starts</td>
+                                <td>Todo ends</td>
+                                <td>Todo priority</td>
+                                <td></td>
+                                <td></td>
+                                <td>created</td>
+                            </tr>
+                        </thead>
+                        
+                        <tbody >
+                            {% for i in task %}
+                            {% if i.username == user.username %}
+                              
+                            <form action="" method="post">{% csrf_token %}
+                            <tr id ="row">
+                                <td>{{user.id}}</td>
+                                <td>{{i.username}}</td>
+                                <td>{{i.Task}}</td>
+                                <td>{{i.starts}}</td>
+                                <td>{{i.ends}}</td>
+                                <td>{{i.priority}}</td>
+                                <td><a class="btn btn-info" id="update" href="{% url 'edit' i.id %}">
+                                    <img id="pic" src="{% static 'image/edit.png' %}" alt="edit">
+                                </a></td>
+                                <td><a class="btn btn-danger" id="del" href="{% url 'del' i.id %}">
+                                    <img id="pic" src="{% static 'image/del.png' %}" alt="del">
+                                </a></td>
+                                <td>{{i.created}}</td>
+                            </tr>
+                           
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                        </tbody>
+                        
+                    </table>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="creation" class="sticky-bottom position-relative">
+            <div class="container-md">
+                <form action=" " method="post" id="task-form">{% csrf_token %}
+                    <table class="table table-light table-striped">
+                        <tr>
+                            <td><label for="">Username</label></td>
+                            <td><input type="text" name="username" id=""></td>
+                        </tr>
+                        <tr>
+                            <td><label for="">Todo Title</label></td>
+                            <td><input type="text" name="Task" id="name"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="">Todo starts</label></td>
+                            <td><input type="date" name="starts" id="starts"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="">Todo ends</label></td>
+                            <td><input type="date" name="ends" id="ends"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="">priority</label></td>
+                            <td>
+                                <select class="from-select" name="priority" id="priority">
+                                    <option selected>-------</option>
+                                    <option>low</option>
+                                    <option>moderate</option>
+                                    <option>high</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td><td>
+                                <button class="btn btn-success" type="submit">save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </section>
+        
+    </main><hr><br>
+ 
+
+   <footer id="foot" >
+        <p>copyrights.</p>
+    </footer>
+
+{% endblock content %}

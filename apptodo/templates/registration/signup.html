@@ -1,0 +1,22 @@
+{% extends 'welpage.html' %}
+{% load static %}
+{% block content %}
+
+<section class="container-md border border-success p-2" id="signsect">
+        
+        <span>
+            <a href="{{request.META.HTTP_REFERER}}"><button class="btn btn-warning">Go Back</button></a>
+        </span>
+    <div id="signform">
+        <form action="" method="post">
+            {% csrf_token %}
+
+            {{form.as_p}}
+        
+            <button class="btn btn-success" type="submit" >save</button> 
+            <button class="btn btn-info" type="reset">reset</button>
+        </form>
+    </div>
+</section>
+
+{% endblock content %}

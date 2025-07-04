@@ -1,0 +1,40 @@
+{% extends 'welpage.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid" id="editdiv">
+    <a href="{{request.META.HTTP_REFERER}}"><button class="btn btn-warning" type="submit">Go Back</button></a>
+    <table class="table table-light table-striped">
+                        
+        <thead>
+            <tr>
+                <td>Todo-username</td>
+                <td>Todo Title</td>
+                <td>Todo starts</td>
+                <td>Todo ends</td>
+                <td>Todo priority</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
+        
+        <tbody >
+            
+            <form action="" method="post">{% csrf_token %}
+            <tr id ="row">
+                <td>{{form.username}}</td>
+                <td>{{form.Task}}</td>
+                <td>{{form.starts}}</td>
+                <td>{{form.ends}}</td>
+                <td>{{form.priority}}</td>
+                <td><button type="submit">done</button></td>
+            </tr>
+            </form>
+            
+        </tbody>
+        
+    </table>
+
+</div>
+
+{% endblock content %}

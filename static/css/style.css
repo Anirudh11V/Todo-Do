@@ -1,0 +1,28 @@
+a{
+    text-decoration: none; color: rgb(0, 0, 0);
+}
+
+#a{
+    margin: 0 auto 0 auto; text-align: center;
+}
+#sign{margin:0 auto 0 auto;  text-align: center;}
+
+#signform{margin: 50px auto 0 auto;}
+#signsect{margin: 100px auto 0 auto;}
+
+#homesect{margin: auto auto 0 auto;}
+#user{
+    text-align: center;
+}
+#out{text-align: right;}
+
+#editdiv{margin: 100px auto 0 0;}
+#delsect{margin: 100px auto 0 25px;}
+
+#evesect{margin-top: 200px;}
+
+#img{width: 75px; height: 50px;}
+#pic{
+    width: 20px; height: 20px;
+}
+#foot{text-align: center;}

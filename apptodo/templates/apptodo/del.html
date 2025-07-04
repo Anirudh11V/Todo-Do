@@ -1,0 +1,40 @@
+{% extends 'welpage.html' %}
+{% load static %}
+{% block content %}
+<section class="position-relative" id="delsect">
+    <div class="container-fluid position-absolute">        
+            
+            <table class="table table-light table-striped">
+                        
+                <thead>
+                    <tr>
+                        <td>Todo Title</td>
+                        <td>Todo starts</td>
+                        <td>Todo ends</td>
+                        <td>Todo priority</td>
+
+                    </tr>
+                </thead>
+                
+                <tbody >    
+                    <form action="" method="post">{% csrf_token %}
+                    <tr id ="row">
+                        <td>{{obj.Task}}</td>
+                        <td>{{obj.starts}}</td>
+                        <td>{{obj.ends}}</td>
+                        <td>{{obj.priority}}</td>
+                    </tr>
+                    <tr>
+                        <td><p>Are you sure you want to delete "{{obj}}"?</p></td>
+                        <td><button type="submit"><a href="{{request.META.HTTP_REFERER}}">Go Back</a></button></td>
+                        <td><button type="submit" id="comp">Delete</button></td>
+                    </tr>
+                    </form>
+                    
+                </tbody>
+                
+            </table>
+    </div>
+
+</section>
+{% endblock content %}

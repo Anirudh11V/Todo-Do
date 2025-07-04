@@ -1,0 +1,25 @@
+{% extends 'welpage.html' %}
+{% load static %}
+{% block content %}
+<section id="a">
+    
+    <div class="container-fluid" id="sign" ><br>
+
+        <img src="{% static 'image/note.png' %}" id="img">
+
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-success" type="submit">Login</button> <br><br>
+        </form>
+
+        <div>
+            <p>To Signup ->
+            <a href="{% url 'authView' %}"><button class="btn btn-info">Register</button></a></p><br>
+        </div>
+        
+    </div>
+
+</section>
+
+{% endblock content %}
